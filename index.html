@@ -137,7 +137,7 @@
     max-width: 560px;
     font-size: 15px;
     font-weight: 400;
-    color: var(--muted);
+    color: var(--white);
     line-height: 1.7;
     opacity: 0;
     transform: translateY(20px);
@@ -160,7 +160,7 @@
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.2em;
-    color: var(--muted);
+    color: var(--white);
     text-transform: uppercase;
   }
 
@@ -174,7 +174,7 @@
   .hero-metric-unit {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 28px;
-    color: var(--muted);
+    color: var(--white);
   }
 
   .hero-scroll {
@@ -182,7 +182,7 @@
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.15em;
-    color: var(--muted2);
+    color: rgba(248,244,240,0.55);
     text-transform: uppercase;
     writing-mode: vertical-rl;
     animation: pulse 2s ease-in-out infinite;
@@ -227,7 +227,7 @@
   .ns-left .big-unit {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(40px, 5vw, 70px);
-    color: var(--muted);
+    color: var(--white);
     display: block;
     margin-top: 0.5rem;
   }
@@ -241,7 +241,7 @@
 
   .ns-right p {
     font-size: 15px;
-    color: var(--muted);
+    color: var(--white);
     line-height: 1.8;
     font-weight: 400;
   }
@@ -259,7 +259,7 @@
     border-radius: 100px;
     font-size: 12px;
     font-family: 'DM Mono', monospace;
-    color: var(--muted);
+    color: var(--white);
     letter-spacing: 0.05em;
     transition: border-color 0.2s, color 0.2s;
   }
@@ -280,7 +280,7 @@
 
   .themes-intro p {
     font-size: 15px;
-    color: var(--muted);
+    color: var(--white);
     line-height: 1.7;
     font-weight: 400;
   }
@@ -356,7 +356,7 @@
 
   .theme-what {
     font-size: 14px;
-    color: var(--muted);
+    color: var(--white);
     line-height: 1.75;
     font-weight: 400;
     margin-bottom: 2rem;
@@ -391,7 +391,7 @@
   .do-list li, .avoid-list li {
     font-size: 12.5px;
     line-height: 1.55;
-    color: var(--muted);
+    color: var(--white);
     font-weight: 400;
     padding-left: 14px;
     position: relative;
@@ -438,7 +438,7 @@
   .unknown-num {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 48px;
-    color: rgba(255,34,0,0.15);
+    color: var(--red);
     line-height: 1;
     margin-bottom: 0.75rem;
   }
@@ -452,7 +452,7 @@
 
   .unknown-text {
     font-size: 12.5px;
-    color: var(--muted);
+    color: var(--white);
     line-height: 1.65;
     font-weight: 400;
   }
@@ -483,7 +483,7 @@
   .footer-meta p {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--muted2);
+    color: rgba(248,244,240,0.55);
     letter-spacing: 0.15em;
     line-height: 2;
     text-transform: uppercase;
@@ -513,7 +513,7 @@
     top: 0; left: 0;
     height: 2px;
     background: var(--red);
-    z-index: 1000;
+    z-index: 1002;
     transition: width 0.1s linear;
   }
 
@@ -547,10 +547,86 @@
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
+
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    height: 54px;
+    background: rgba(8,8,8,0.72);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.25em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--red); }
+  .nav-links { display: flex; align-items: center; gap: 2.25rem; }
+  .nav-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: rgba(248,244,240,0.4);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+    padding-bottom: 3px;
+  }
+  .nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 1px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-item:hover { color: var(--white); }
+  .nav-item.active { color: var(--white); }
+  .nav-item.active::after { transform: scaleX(1); }
+
+  section.hero { padding: 0; border-top: none; }
+  .hero-right {
+    position: absolute !important;
+    top: 0; right: 0; bottom: 0;
+    width: 50%;
+  }
+  .hero { position: relative; }
+  .hero-left { position: relative; z-index: 2; width: 50%; }
+
+  @media (max-width: 768px) {
+    .nav-links { gap: 1.25rem; }
+    .nav-item { font-size: 9px; letter-spacing: 0.12em; }
+    .hero-right { position: relative !important; width: 100%; height: 50vh; }
+    .hero-left { width: 100%; }
+  }
 </style>
 </head>
 <body>
 
+<nav class="site-nav" id="site-nav">
+  <a href="#" class="nav-brand">SUPPLY<span>·</span>DEPOP</a>
+  <div class="nav-links">
+    <a href="#" class="nav-item active" data-section="hero">Home</a>
+    <a href="#north-star" class="nav-item" data-section="north-star">7-Day STR</a>
+    <a href="#themes" class="nav-item" data-section="themes">Themes</a>
+    <a href="#questions" class="nav-item" data-section="questions">Big Unknowns</a>
+    <a href="#comments" class="nav-item" data-section="comments">Feedback</a>
+  </div>
+</nav>
 <div class="progress-bar" id="progress"></div>
 
 <!-- HERO -->
@@ -597,7 +673,7 @@
 </div>
 
 <!-- NORTH STAR -->
-<section>
+<section id="north-star">
   <div class="section-label">01 — North Star</div>
   <div class="north-star">
     <div class="ns-left reveal">
@@ -621,7 +697,7 @@
 </section>
 
 <!-- THEMES -->
-<section>
+<section id="themes">
   <div class="section-label">02 — Four Themes</div>
   <div class="themes-intro reveal">
     <h2>Where Supply focuses,<br>how teams ladder up</h2>
@@ -638,7 +714,7 @@
       <div class="theme-what">
         Create one simple baseline selling experience that helps every seller understand how to get from intent to sale. Kill seller onboarding — sellers share info while they learn selling tactics. We ask for info at the right time.
         <br><br>
-        <em style="color:rgba(248,244,240,0.35); font-style:normal;">"List an item, make it sale-ready, price it well, take the next best action."</em>
+        <em style="color:rgba(248,244,240,0.65); font-style:normal;">"List an item, make it sale-ready, price it well, take the next best action."</em>
       </div>
       <div class="do-avoid">
         <div class="do-section">
@@ -670,7 +746,7 @@
       <div class="theme-what">
         Improve the quality, accuracy, trust and discoverability of every listing without adding unnecessary seller effort. Covers photos, attributes, condition, size and fit, description, item accuracy, trust signals and structured data for search, recommendations and future AI discovery.
         <br><br>
-        <em style="color:rgba(248,244,240,0.35); font-style:normal;">Listing Team can now predict all attributes. The opportunity is automation over friction.</em>
+        <em style="color:rgba(248,244,240,0.65); font-style:normal;">Listing Team can now predict all attributes. The opportunity is automation over friction.</em>
       </div>
       <div class="do-avoid">
         <div class="do-section">
@@ -702,7 +778,7 @@
       <div class="theme-what">
         Make the right price and buyer opportunity obvious so sellers aren't guessing and buyers immediately understand the value. Combines pricing, buyer-side price perception, offers, demand matching, search, recommendations and market signals.
         <br><br>
-        <em style="color:rgba(248,244,240,0.35); font-style:normal;">Pricing is the highest-confidence STR lever — operationalise it first. Collab with Demand.</em>
+        <em style="color:rgba(248,244,240,0.65); font-style:normal;">Pricing is the highest-confidence STR lever — operationalise it first. Collab with Demand.</em>
       </div>
       <div class="do-avoid">
         <div class="do-section">
@@ -735,7 +811,7 @@
       <div class="theme-what">
         Turn the post-listing journey into an active conversion engine using feedback, next best actions and automation. Covers Depop as coach, post-listing actions, seller tooling, feedback loops, offers, price drops, relisting, boosting and auto-negotiate.
         <br><br>
-        <em style="color:rgba(248,244,240,0.35); font-style:normal;">Sellers currently list and wait. The first 7 days after listing need to become the most active optimisation window.</em>
+        <em style="color:rgba(248,244,240,0.65); font-style:normal;">Sellers currently list and wait. The first 7 days after listing need to become the most active optimisation window.</em>
       </div>
       <div class="do-avoid">
         <div class="do-section">
@@ -763,7 +839,7 @@
 </section>
 
 <!-- UNKNOWNS -->
-<section>
+<section id="questions">
   <div class="section-label">03 — Big Unknowns</div>
   <div style="max-width:560px; margin-bottom:1rem;" class="reveal">
     <h2 style="font-size:clamp(24px,3vw,40px); font-weight:800; line-height:1.2;">The questions we<br>need to answer first</h2>
@@ -794,6 +870,37 @@
       <div class="unknown-label">UX principle</div>
       <div class="unknown-text">When do we guide, when do we automate, and when do we stay out of the way entirely?</div>
     </div>
+  </div>
+</section>
+
+
+<!-- COMMENTS -->
+<section id="comments">
+  <div class="section-label">04 — Comments</div>
+  <div style="max-width:760px;">
+    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,5vw,72px); line-height:0.92; margin-bottom:2.5rem;">Share your<br><span style="color:var(--red)">thoughts</span></h2>
+
+    <div id="comment-form" style="background:var(--off-black); border:0.5px solid var(--border); padding:2rem 2.5rem; margin-bottom:3rem;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.25rem;">
+        <div>
+          <label style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; display:block; margin-bottom:0.5rem;">Your name</label>
+          <input type="text" id="cname" placeholder="e.g. Alex K." style="width:100%; background:var(--black); border:0.5px solid var(--border); color:var(--white); font-family:'Syne',sans-serif; font-size:14px; padding:10px 14px; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(255,34,0,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'" />
+        </div>
+        <div>
+          <label style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; display:block; margin-bottom:0.5rem;">Role / team (optional)</label>
+          <input type="text" id="crole" placeholder="e.g. Product, Engineering" style="width:100%; background:var(--black); border:0.5px solid var(--border); color:var(--white); font-family:'Syne',sans-serif; font-size:14px; padding:10px 14px; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(255,34,0,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'" />
+        </div>
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <label style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; color:var(--red); text-transform:uppercase; display:block; margin-bottom:0.5rem;">Your comment</label>
+        <textarea id="ctext" rows="4" placeholder="What do you think about this strategy? Questions, pushback, or support — all welcome." style="width:100%; background:var(--black); border:0.5px solid var(--border); color:var(--white); font-family:'Syne',sans-serif; font-size:14px; padding:10px 14px; outline:none; resize:vertical; transition:border-color 0.2s; line-height:1.6;" onfocus="this.style.borderColor='rgba(255,34,0,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"></textarea>
+      </div>
+      <button id="submit-btn" onclick="submitComment()" style="background:var(--red); color:var(--white); border:none; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; padding:12px 28px; cursor:pointer; transition:background 0.2s;" onmouseover="this.style.background='var(--red-dark)'" onmouseout="this.style.background='var(--red)'">Post comment →</button>
+      <span id="submit-msg" style="display:none; font-family:'DM Mono',monospace; font-size:11px; color:#4CAF7D; letter-spacing:0.1em; margin-left:1rem;">Comment posted ✓</span>
+    </div>
+
+    <div id="comments-list"></div>
+    <p id="no-comments" style="font-family:'DM Mono',monospace; font-size:12px; color:rgba(248,244,240,0.3); letter-spacing:0.1em;">No comments yet — be the first.</p>
   </div>
 </section>
 
@@ -837,6 +944,100 @@
   document.querySelectorAll('.reveal, .theme-card, .unknown-item').forEach(el => {
     observer.observe(el);
   });
+</script>
+
+<script>
+  const STORAGE_KEY = 'sotu_supply_comments_v1';
+
+  function getComments() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e) { return []; }
+  }
+
+  function saveComments(arr) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+  }
+
+  function formatDate(ts) {
+    const d = new Date(ts);
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+
+  function initials(name) {
+    return name.trim().split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+  }
+
+  function renderComments() {
+    const comments = getComments();
+    const list = document.getElementById('comments-list');
+    const none = document.getElementById('no-comments');
+    if (!list) return;
+    if (comments.length === 0) {
+      list.innerHTML = '';
+      if (none) none.style.display = 'block';
+      return;
+    }
+    if (none) none.style.display = 'none';
+    list.innerHTML = comments.slice().reverse().map((c, i) => `
+      <div style="border-top:0.5px solid var(--border); padding:2rem 0; display:flex; gap:1.25rem; align-items:flex-start;">
+        <div style="width:40px; height:40px; min-width:40px; background:var(--red); display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--white); letter-spacing:0.05em;">${initials(c.name)}</div>
+        <div style="flex:1;">
+          <div style="display:flex; align-items:baseline; gap:0.75rem; margin-bottom:0.5rem; flex-wrap:wrap;">
+            <span style="font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--white);">${c.name}</span>
+            ${c.role ? `<span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; color:var(--red); text-transform:uppercase;">${c.role}</span>` : ''}
+            <span style="font-family:'DM Mono',monospace; font-size:10px; color:rgba(248,244,240,0.3); margin-left:auto;">${formatDate(c.ts)}</span>
+          </div>
+          <p style="font-size:14px; color:var(--white); line-height:1.75; white-space:pre-wrap;">${c.text}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function submitComment() {
+    const name = (document.getElementById('cname').value || '').trim();
+    const role = (document.getElementById('crole').value || '').trim();
+    const text = (document.getElementById('ctext').value || '').trim();
+    if (!name || !text) {
+      alert('Please add your name and a comment.');
+      return;
+    }
+    const comments = getComments();
+    comments.push({ name, role, text, ts: Date.now() });
+    saveComments(comments);
+    document.getElementById('cname').value = '';
+    document.getElementById('crole').value = '';
+    document.getElementById('ctext').value = '';
+    const msg = document.getElementById('submit-msg');
+    msg.style.display = 'inline';
+    setTimeout(() => { msg.style.display = 'none'; }, 3000);
+    renderComments();
+  }
+
+  renderComments();
+</script>
+
+<script>
+  (function() {
+    var sections = ['hero','north-star','themes','questions','comments'];
+    var links = {};
+    sections.forEach(function(id) {
+      links[id] = document.querySelector('[data-section="' + id + '"]');
+    });
+
+    function updateActive() {
+      var sy = window.scrollY;
+      var active = 'hero';
+      ['north-star','themes','questions','comments'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && el.offsetTop - 120 <= sy) active = id;
+      });
+      sections.forEach(function(id) {
+        if (links[id]) links[id].classList.toggle('active', id === active);
+      });
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+  })();
 </script>
 </body>
 </html>
