@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -334,6 +335,13 @@
     position: absolute;
     top: 1.5rem; right: 2rem;
     user-select: none;
+    transition: color 0.35s ease, transform 0.35s ease, opacity 0.35s ease;
+    transform-origin: top right;
+  }
+  .theme-card:hover .theme-number {
+    color: var(--red);
+    transform: scale(1.12) translateY(-4px);
+    opacity: 1;
   }
 
   .theme-index {
